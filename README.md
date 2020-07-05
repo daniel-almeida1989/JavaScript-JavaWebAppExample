@@ -16,3 +16,6 @@
 -----------------------------------------------------
 ##v0.0.2-20200705-00
  Project structure implementation phase.
+-----------------------------------------------------
+##v0.0.3-20200705-00
+ Migrating project folder from Netbeans to Eclipse IDE.
