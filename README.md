@@ -19,7 +19,11 @@
 -----------------------------------------------------
 ##v0.0.3-20200705-00
  Migrating project folder from Netbeans to Eclipse IDE.
- -----------------------------------------------------
+-----------------------------------------------------
 ##v0.0.4-20200705-00
  Reallocating project folder to a correct directory
  separated from the git data files.
+-----------------------------------------------------
+##v0.0.5-20200707-00
+ Remaking project to fix some issues about Maven, Compiler
+ and Apache Tomcat compatibility.
