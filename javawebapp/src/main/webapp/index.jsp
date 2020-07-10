@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<h1>Bem vindo!</h1>
-		<form method="post" action="home">
+		<form method="get" action="home">
 			<input type="submit" value="Cadastro de Clientes">
 		</form>
 	</body>
