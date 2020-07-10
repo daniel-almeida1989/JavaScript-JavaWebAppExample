@@ -27,3 +27,7 @@
 ##v0.0.5-20200707-00
  Remaking project to fix some issues about Maven, Compiler
  and Apache Tomcat compatibility.
+-----------------------------------------------------
+##v0.0.6-20200710-00
+ Since I got some problems with Eclipse IDE, I changed to
+ Netbeans. Again.
