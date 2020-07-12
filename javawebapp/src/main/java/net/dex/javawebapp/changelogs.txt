@@ -32,3 +32,6 @@
  Finished modification, addition and exclusion of emails, using
  hyperlinks for the commands, javadoc completed, file organization,
  and list viewing by tables.
+-----------------------------------------------------
+##v0.2.0-20200712-188
+ Transcription of the code into JSTL standards.

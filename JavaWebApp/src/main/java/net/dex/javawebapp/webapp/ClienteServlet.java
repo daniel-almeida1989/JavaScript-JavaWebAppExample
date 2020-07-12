@@ -39,7 +39,7 @@ public class ClienteServlet extends HttpServlet
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
   {
-    System.out.println("MÉTODO POST");
+    System.out.println("MÉTODO GET");
     String i = req.getParameter("i");
     String acao = req.getParameter("acao");
     String cliOut = "";
@@ -59,6 +59,7 @@ public class ClienteServlet extends HttpServlet
       {
         System.out.println("AÇÃO: " + acao);
         clienteService.excluir(Integer.parseInt(i));
+        req.setAttribute("ind", "");
         req.setAttribute("msg", "Removido com sucesso!");
       }
     }
@@ -94,7 +95,7 @@ public class ClienteServlet extends HttpServlet
       }
     }
     RequestDispatcher dispatcher = req.getRequestDispatcher("clientes.jsp");
-    req.setAttribute("cli", "");
+    //req.setAttribute("cli", "");
     req.setAttribute("reqLista", clienteService.getClientes());
     dispatcher.forward(req, resp);
     //resp.sendRedirect("clientes");

@@ -4,7 +4,7 @@
 
   <groupId>net.dex</groupId>
   <artifactId>javawebapp</artifactId>
-  <version>v0.1.0</version>
+  <version>v0.2.0</version>
   <packaging>war</packaging>
 
   <name>javawebapp</name>
@@ -15,6 +15,18 @@
   </properties>
     
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
+    <dependency>
+      <groupId>taglibs</groupId>
+      <artifactId>standard</artifactId>
+      <version>1.1.2</version>
+    </dependency>
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-web-api</artifactId>
