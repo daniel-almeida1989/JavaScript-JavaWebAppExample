@@ -1,6 +1,9 @@
 package net.dex.javawebapp.webapp;
-
-
+/**
+ *
+ * @author Daniel Augusto Monteiro de Almeida
+ * @version v0.1.0-20200712-181
+ */
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+/**
+ *
+ * Servlet for the Home Page.
+ */
 @WebServlet(urlPatterns = {"/home", "/index", "/inicio"})
 public class HomePageServlet extends HttpServlet
 {

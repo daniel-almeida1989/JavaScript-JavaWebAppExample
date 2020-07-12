@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import net.dex.javawebapp.model.Cliente;
 import net.dex.javawebapp.service.ClienteService;
 
-
+/**
+ *
+ * Servlet for Clientes page.
+ */
 @WebServlet(urlPatterns = {"/clientes"})
 public class ClienteServlet extends HttpServlet
 {
@@ -36,27 +39,32 @@ public class ClienteServlet extends HttpServlet
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
   {
-    Cliente cli = new Cliente();
+    System.out.println("MÉTODO POST");
     String i = req.getParameter("i");
-    String action = req.getParameter("action");
-    RequestDispatcher dispatcher = req.getRequestDispatcher("clientes.jsp");
+    String acao = req.getParameter("acao");
+    String cliOut = "";
+    req.setAttribute("ind", i);
     if ((i!= null) && (!"".equals(i)))
     {
-      req.setAttribute("ind", i);
-      if (action == "edit")
+      if ("edit".equals(acao))
       {
+        System.out.println("AÇÃO: " + acao);
         int indice = Integer.parseInt(i);
+        Cliente cli = new Cliente();
         cli = clienteService.getUmCliente(indice);
-        req.setAttribute("cli", cli);
-        req.setAttribute("msg", "Editado com sucesso!");
+        cliOut = cli.getEmail();
+        req.setAttribute("acao", acao);
       }
-      else if (action == "del")
+      else if ("del".equals(acao))
       {
+        System.out.println("AÇÃO: " + acao);
         clienteService.excluir(Integer.parseInt(i));
         req.setAttribute("msg", "Removido com sucesso!");
       }
     }
+    req.setAttribute("cli", cliOut);
     req.setAttribute("reqLista", clienteService.getClientes());
+    RequestDispatcher dispatcher = req.getRequestDispatcher("clientes.jsp");
     dispatcher.forward(req, resp);
 
     //super.doGet(req, resp);
@@ -72,10 +80,21 @@ public class ClienteServlet extends HttpServlet
     if ((email != null) && (!"".equals(email)))
     {
       cli.setEmail(email);
-      clienteService.cadastrar(cli);
-      req.setAttribute("msg", "Cadastrado com sucesso!");
+      String ind = req.getParameter("ind");
+      if (!"".equals(ind))
+      {
+        int indexInd = Integer.parseInt(ind);
+        clienteService.alterar(indexInd, cli);
+        req.setAttribute("msg", "Editado com sucesso!");
+      }
+      else
+      {
+        clienteService.cadastrar(cli);
+        req.setAttribute("msg", "Cadastrado com sucesso!");
+      }
     }
     RequestDispatcher dispatcher = req.getRequestDispatcher("clientes.jsp");
+    req.setAttribute("cli", "");
     req.setAttribute("reqLista", clienteService.getClientes());
     dispatcher.forward(req, resp);
     //resp.sendRedirect("clientes");
