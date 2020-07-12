@@ -31,6 +31,11 @@ public class ClienteService
     return lista;
   }
 
+  public Cliente getUmCliente(int indice)
+  {
+    return lista.get(indice);
+  }
+
   public void excluir(int indice)
   {
     lista.remove(indice);

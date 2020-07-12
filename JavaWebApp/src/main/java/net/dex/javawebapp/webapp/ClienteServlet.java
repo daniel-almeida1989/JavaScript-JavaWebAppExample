@@ -36,12 +36,25 @@ public class ClienteServlet extends HttpServlet
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
   {
+    Cliente cli = new Cliente();
     String i = req.getParameter("i");
+    String action = req.getParameter("action");
     RequestDispatcher dispatcher = req.getRequestDispatcher("clientes.jsp");
-    if ((i!="" ) && (i!= null))
+    if ((i!= null) && (!"".equals(i)))
     {
-      clienteService.excluir(Integer.parseInt(i));
-      req.setAttribute("msg", "Removido com sucesso!");
+      req.setAttribute("ind", i);
+      if (action == "edit")
+      {
+        int indice = Integer.parseInt(i);
+        cli = clienteService.getUmCliente(indice);
+        req.setAttribute("cli", cli);
+        req.setAttribute("msg", "Editado com sucesso!");
+      }
+      else if (action == "del")
+      {
+        clienteService.excluir(Integer.parseInt(i));
+        req.setAttribute("msg", "Removido com sucesso!");
+      }
     }
     req.setAttribute("reqLista", clienteService.getClientes());
     dispatcher.forward(req, resp);
@@ -56,14 +69,16 @@ public class ClienteServlet extends HttpServlet
 
     Cliente cli = new Cliente();
     String email = req.getParameter("email");
-    cli.setEmail(email);
-    clienteService.cadastrar(cli);
+    if ((email != null) && (!"".equals(email)))
+    {
+      cli.setEmail(email);
+      clienteService.cadastrar(cli);
+      req.setAttribute("msg", "Cadastrado com sucesso!");
+    }
     RequestDispatcher dispatcher = req.getRequestDispatcher("clientes.jsp");
-    req.setAttribute("msg", "Cadastrado com sucesso!");
     req.setAttribute("reqLista", clienteService.getClientes());
     dispatcher.forward(req, resp);
-
-    resp.sendRedirect("clientes");
+    //resp.sendRedirect("clientes");
     //resp.setContentType("text/html;charset=UTF-8");
     //resp.getWriter().print("Chamou pelo método POST enviando email: \"" + email + "\"");
     //super.doPost(req, resp);

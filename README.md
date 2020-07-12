@@ -35,3 +35,6 @@
 ##v0.0.7-20200710-145
  Home page creation, common redirect using post/get requests,
  Service creation to increment and acessing Lists
+-----------------------------------------------------
+##v0.0.8-20200711-155
+ Edit client list first implementations (not finished yet).
