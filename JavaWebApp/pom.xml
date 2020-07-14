@@ -4,7 +4,7 @@
 
   <groupId>net.dex</groupId>
   <artifactId>javawebapp</artifactId>
-  <version>v0.2.0</version>
+  <version>v1.0.0</version>
   <packaging>war</packaging>
 
   <name>javawebapp</name>
